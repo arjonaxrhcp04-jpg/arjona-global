@@ -80,7 +80,40 @@ let category='Todos';
 function filter(){let q=search.value.trim().toLowerCase(),shown=0;cards.forEach(c=>{let ok=(category==='Todos'||c.dataset.category===category)&&c.dataset.name.toLowerCase().includes(q);c.style.display=ok?'':'none';if(ok)shown++});empty.style.display=shown?'none':'block'}
 document.querySelectorAll('.cat').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));b.classList.add('active');category=b.dataset.category;filter()}));
 document.getElementById('searchBtn').addEventListener('click',filter);search.addEventListener('input',filter);
-document.getElementById('sellerBtn').addEventListener('click',()=>alert('La inscripción de proveedores se habilitará en la siguiente etapa. ¡Gracias por tu interés en ARJONA GLOBAL!'));
-</script>
-</body>
-</html>
+
+document.getElementById('sellerBtn').addEventListener('click', () => {
+  const modal = document.createElement('div');
+
+  modal.style.cssText = `
+    position:fixed;inset:0;background:#000b;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;z-index:9999;
+  `;
+
+  modal.innerHTML = `
+    <div style="background:white;padding:25px;border-radius:18px;width:100%;max-width:400px;color:#17232c">
+      <h2>Registro de proveedor</h2>
+      <p>Únete a ARJONA GLOBAL</p>
+      <form id="sellerForm">
+        <input name="name" placeholder="Nombre completo o empresa" required style="width:100%;padding:13px;margin:8px 0">
+        <input name="email" type="email" placeholder="Correo electrónico" required style="width:100%;padding:13px;margin:8px 0">
+        <input name="phone" type="tel" placeholder="Teléfono" required style="width:100%;padding:13px;margin:8px 0">
+        <input name="password" type="password" placeholder="Contraseña" required minlength="8" style="width:100%;padding:13px;margin:8px 0">
+        <button type="submit" style="width:100%;padding:14px;background:#e7b94f;border:0;border-radius:10px;font-weight:bold">
+          Registrarme
+        </button>
+      </form>
+      <button id="closeSeller" style="margin-top:12px;padding:10px">Cerrar</button>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  document.getElementById('closeSeller').onclick = () => modal.remove();
+
+  document.getElementById('sellerForm').onsubmit = (e) => {
+    e.preventDefault();
+    alert('Formulario recibido. El registro de cuentas estará disponible cuando conectemos la base de datos.');
+    modal.remove();
+  };
+});

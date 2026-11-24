@@ -82,10 +82,7 @@ document.querySelectorAll('.cat').forEach(b=>b.addEventListener('click',()=>{doc
 document.getElementById('searchBtn').addEventListener('click',filter);search.addEventListener('input',filter);
 
 document.getElementById('sellerBtn').addEventListener('click', () => {
-  window.open(
-    'https://docs.google.com/forms/d/e/1FAIpQLSde2z2U-jq5T3SOdnmKy4QRbNaVsSuZ7_YufQTDksvGEufqmg/viewform',
-    '_blank'
-  );
+  window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSde2z2U-jq5T3SOdnmKy4QRbNaVsSuZ7_YufQTDksvGEufqmg/viewform';
 });
 
 </script>

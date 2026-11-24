@@ -82,38 +82,12 @@ document.querySelectorAll('.cat').forEach(b=>b.addEventListener('click',()=>{doc
 document.getElementById('searchBtn').addEventListener('click',filter);search.addEventListener('input',filter);
 
 document.getElementById('sellerBtn').addEventListener('click', () => {
-  const modal = document.createElement('div');
-
-  modal.style.cssText = `
-    position:fixed;inset:0;background:#000b;
-    display:flex;align-items:center;justify-content:center;
-    padding:20px;z-index:9999;
-  `;
-
-  modal.innerHTML = `
-    <div style="background:white;padding:25px;border-radius:18px;width:100%;max-width:400px;color:#17232c">
-      <h2>Registro de proveedor</h2>
-      <p>Únete a ARJONA GLOBAL</p>
-      <form id="sellerForm">
-        <input name="name" placeholder="Nombre completo o empresa" required style="width:100%;padding:13px;margin:8px 0">
-        <input name="email" type="email" placeholder="Correo electrónico" required style="width:100%;padding:13px;margin:8px 0">
-        <input name="phone" type="tel" placeholder="Teléfono" required style="width:100%;padding:13px;margin:8px 0">
-        <input name="password" type="password" placeholder="Contraseña" required minlength="8" style="width:100%;padding:13px;margin:8px 0">
-        <button type="submit" style="width:100%;padding:14px;background:#e7b94f;border:0;border-radius:10px;font-weight:bold">
-          Registrarme
-        </button>
-      </form>
-      <button id="closeSeller" style="margin-top:12px;padding:10px">Cerrar</button>
-    </div>
-  `;
-
-  document.body.appendChild(modal);
-
-  document.getElementById('closeSeller').onclick = () => modal.remove();
-
-  document.getElementById('sellerForm').onsubmit = (e) => {
-    e.preventDefault();
-    alert('Formulario recibido. El registro de cuentas estará disponible cuando conectemos la base de datos.');
-    modal.remove();
-  };
+  window.open(
+    'https://docs.google.com/forms/d/e/1FAIpQLSde2z2U-jq5T3SOdnmKy4QRbNaVsSuZ7_YufQTDksvGEufqmg/viewform',
+    '_blank'
+  );
 });
+
+</script>
+</body>
+</html>
